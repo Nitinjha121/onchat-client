@@ -1,0 +1,92 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .user-card-view {
+    @apply flex gap-3 px-3 py-2 rounded-md bg-white hover:bg-slate-100 dark:bg-slate-700 dark:hover:bg-slate-800;
+  }
+
+  .user-shimmer-card-view {
+    @apply user-card-view animate-pulse;
+  }
+
+  .circle {
+    @apply w-10 h-10 rounded-full bg-gray-200 dark:bg-gray-600;
+  }
+
+  .shimmer-line {
+    @apply h-2 bg-slate-200 dark:bg-slate-600 rounded-sm;
+  }
+}
+
+/* animation utilities */
+@layer utilities {
+  .animate-loader {
+    @apply border-l-blue-500 relative w-11 h-11 px-1 py-2 rounded-full bg-transparent border-[3px] border-solid border-[rgba(101,148,231,0.2)] animate-[custom-loader_1s_linear_infinite];
+  }
+
+  .animate-dot-pulse > * {
+    @apply bg-blue-500 w-3 h-3 rounded-full animate-[dot-pulse_1.5s_linear_infinite];
+  }
+
+  .animate-dot-pulse div:nth-child(2) {
+    @apply [animation-delay:0.25s];
+  }
+
+  .animate-dot-pulse div:nth-child(3) {
+    @apply [animation-delay:0.5s];
+  }
+
+  @keyframes custom-loader {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  @keyframes dot-pulse {
+    0%,
+    80%,
+    100% {
+      transform: scale(0);
+    }
+
+    45% {
+      transform: scale(1);
+    }
+  }
+}
+
+html {
+  font-family: "Lexend Deca", "Open Sans", sans-serif;
+}
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+}
+
+/* Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  width: 10px;
+}
+
+*::-webkit-scrollbar-track {
+  background: rgb(233, 231, 231);
+  border-radius: 5px;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: rgb(186, 184, 184);
+  border-radius: 14px;
+}
+
+.dark *::-webkit-scrollbar-thumb {
+  background-color: #3f3f46;
+}
+.dark *::-webkit-scrollbar-track {
+  background: #27272a;
+}
